@@ -2,8 +2,13 @@ package repasoReferencias.partido;
 
 public class Partido {
 
-    Persona[] participantes = new Persona[50];
-    int last = 0;
+    Accion[] participantes;
+    int last;
+
+    public Partido() {
+        participantes = new Accion[50];
+        last = 0;
+    }
 
     void addParticipante(Persona participante) {
         participantes[last++] = participante;
@@ -12,7 +17,7 @@ public class Partido {
     }
 
     void iniciarPartido() {
-        for (Persona p : participantes) {
+        for (Accion p : participantes) {
             if (p != null) {
                 p.realizarAccion();
                 if (p instanceof Arbitro) {

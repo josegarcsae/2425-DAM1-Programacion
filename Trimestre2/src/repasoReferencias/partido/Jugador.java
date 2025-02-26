@@ -8,7 +8,7 @@ public class Jugador extends Persona {
         this.numero = numero;
     }
 
-    void realizarAccion() {
+    public void realizarAccion() {
         System.out.println("Soy " + nombre + " y tengo el numero " + numero);
     }
 }

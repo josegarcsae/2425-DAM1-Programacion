@@ -9,7 +9,7 @@ public class Arbitro extends Persona {
         this.tomatazo = tomatazo;
     }
 
-    void realizarAccion() {
+    public void realizarAccion() {
         System.out.println("Soy el árbitro y me llamo " + nombre);
     }
 
