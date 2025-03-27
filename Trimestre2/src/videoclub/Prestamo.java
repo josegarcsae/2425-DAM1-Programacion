@@ -48,4 +48,9 @@ public class Prestamo {
         this.fecha = fecha;
     }
 
+    public String toString() {
+        return cliente.getNombre() + " ha alquilado " + pelicula.getTitulo() +
+                " y la tiene que devolver el " + getFechaDevolucion();
+    }
+
 }

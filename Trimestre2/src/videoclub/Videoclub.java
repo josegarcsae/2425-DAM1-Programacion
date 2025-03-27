@@ -21,9 +21,15 @@ public class Videoclub {
     public void añadirPelicula(Pelicula pelicula) {
         this.peliculas.add(pelicula);
     }
-    public void añadirPrestamo(Prestamo prestamo) {
-        this.prestamos.add(prestamo);
+    public void añadirPrestamo(Cliente cliente, Pelicula pelicula)
+        throws NotFoundException {
+        if (!(cliente != null && pelicula != null))
+            throw new NotFoundException(cliente == null ? "No se ha encontrado al cliente" :
+                    "No se ha encontrado la pelicula");
+        else
+            this.prestamos.add(new Prestamo(pelicula, cliente));
     }
+
     public Pelicula buscaPelicula(int codigo) {
         for (Pelicula pelicula : peliculas) {
             if (codigo == pelicula.getCodigo()) {
@@ -39,6 +45,39 @@ public class Videoclub {
             }
         }
         return null;
+    }
+
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public ArrayList<Prestamo> getPrestamos(int numeroCarnet) {
+        ArrayList<Prestamo> prestamosUsuario = new ArrayList<>();
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCliente().getNumeroCarnet() == numeroCarnet)
+                prestamosUsuario.add(prestamo);
+        }
+        return prestamosUsuario;
+    }
+
+    public boolean devolucion(int codigoPelicula, int numeroCarnet) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCliente().getNumeroCarnet() == numeroCarnet
+                && prestamo.getPelicula().getCodigo() == codigoPelicula) {
+                prestamos.remove(prestamo);
+                return true;
+            }
+        }
+        return false;
+    }
+    public ArrayList<Prestamo> prestamosMorosos() {
+        ArrayList<Prestamo> morosos = new ArrayList<>();
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCliente().getNombre().toLowerCase().equals("marta")) { // MAL, corregir
+                morosos.add(prestamo);
+            }
+        }
+        return morosos;
     }
 
 }
