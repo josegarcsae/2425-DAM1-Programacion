@@ -1,0 +1,36 @@
+[
+  {
+    "profesor": {
+      "nombre": "Guzmán",
+      "apellidos": "Arce",
+      "edad": 44,
+      "asignaturas": [
+        {
+          "nombre": "Programacion",
+          "alumnos": 30
+        },
+        {
+          "nombre": "Redes",
+          "alumnos": 20
+        }
+      ]
+    }
+  },
+  {
+    "profesor": {
+      "nombre": "Fabio",
+      "apellidos": "Guevara",
+      "edad": 34,
+      "asignaturas": [
+        {
+          "nombre": "Sistemas de Información",
+          "alumnos": 30
+        },
+        {
+          "nombre": "Entornos de desarrollo",
+          "alumnos": 20
+        }
+      ]
+    }
+  }
+]
