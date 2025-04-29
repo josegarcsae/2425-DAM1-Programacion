@@ -26,6 +26,8 @@ public class PersonaMain {
                         .collect(Collectors.joining(", "))
         );
 
+        int alumn[] = new int[5];
+        int[] alumn2 = new int[5];
 
     }
 }
