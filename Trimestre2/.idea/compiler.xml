@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="prueba" />
         <module name="holavaadin" />
+        <module name="prueba" />
         <module name="PruebaJDBC2" />
       </profile>
     </annotationProcessing>
