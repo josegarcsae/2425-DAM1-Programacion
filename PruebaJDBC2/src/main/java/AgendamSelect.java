@@ -1,14 +1,26 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgendamSelect {
 
     public static void main(String[] args) {
 
+        List<Contacto> contactosBD = recuperaTodosLosContactosDeBD();
+        System.out.println(contactosBD);
+
+    }
+
+    private static List<Contacto> recuperaTodosLosContactosDeBD() {
+
         String url = "jdbc:mariadb://192.168.17.38:3306/agendam";
         String usuario = "guzman";
         String contraseña = "guzman";
 
-        try (Connection conexion = DriverManager.getConnection(url, usuario, contraseña)) {
+        List<Contacto> contactos = new ArrayList<>();
+
+        try {
+            Connection conexion = DriverManager.getConnection(url, usuario, contraseña);
             System.out.println("Conexión exitosa a la base de datos.");
 
             // Consulta SQL
@@ -21,13 +33,18 @@ public class AgendamSelect {
                 String nombre = resultado.getString("nombre");
                 String apellidos = resultado.getString("apellidos");
                 String apodo = resultado.getString("apodo");
-                System.out.println("ID: " + id + ", Nombre: " + nombre + ", Apellidos: " + apellidos + ", Apodo: " + apodo);
+                Contacto nuevoContacto = new Contacto(id, nombre, apellidos);
+                nuevoContacto.setApodo(apodo);
+                contactos.add(nuevoContacto);
             }
+
+            conexion.close();
 
         } catch (SQLException e) {
             System.err.println("Error al conectar: " + e.getMessage());
         }
 
+        return contactos;
     }
 
 }
