@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AgendamInsert {
+public class AgendamUpdate {
 
     public static void main(String[] args) {
 
@@ -18,20 +18,15 @@ public class AgendamInsert {
             System.out.println("He desactivado el autocommit");
 
             // Consulta SQL
-            String sql = "INSERT INTO contactos(nombre, apellidos, apodo) " +
-                    "VALUES (?,?,?)";
+            String sql = "UPDATE contactos SET apodo = ? WHERE upper(nombre) LIKE ?";
 
             PreparedStatement sentencia = conexion.prepareStatement(sql);
             int i = 1;
-            sentencia.setString(i++, "Indiana");
-            sentencia.setString(i++, "Jones");
-            sentencia.setString(i++, "El del látigo");
+            sentencia.setString(i++, "El del padre con barba");
+            sentencia.setString(i++, "INDI%");
             int filasAfectadas = sentencia.executeUpdate();
 
-            System.out.println("Hemos insertado " + filasAfectadas + " filas");
-
-//            if (true)
-//                conexion.rollback();
+            System.out.println("Hemos actualizado " + filasAfectadas + " filas");
 
             conexion.commit();
 

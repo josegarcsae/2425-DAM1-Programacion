@@ -14,7 +14,7 @@ public class AgendamSelectConFiltro {
             // Consulta SQL
             String sql = "SELECT idContacto, nombre, apellidos, apodo FROM contactos WHERE upper(nombre) like ?";
             PreparedStatement sentencia = conexion.prepareStatement(sql);
-            sentencia.setString(1, "M%");
+            sentencia.setString(1, "INDI%");
             ResultSet resultado = sentencia.executeQuery();
 
             while (resultado.next()) {
