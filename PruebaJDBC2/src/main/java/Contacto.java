@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.util.StringJoiner;
 
 public class Contacto {
 
@@ -102,17 +101,17 @@ public class Contacto {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Contacto.class.getSimpleName() + "[", "]")
-                .add("idContacto=" + idContacto)
-                .add("nombre='" + nombre + "'")
-                .add("apellidos='" + apellidos + "'")
-                .add("apodo='" + apodo + "'")
-                .add("relacion='" + relacion + "'")
-                .add("telefono='" + telefono + "'")
-                .add("cumpleanios=" + cumpleanios)
-                .add("instagram='" + instagram + "'")
-                .add("email='" + email + "'")
-                .add("empresa='" + empresa + "'")
-                .toString();
+        final StringBuilder sb = new StringBuilder();
+        sb.append("idContacto=").append(idContacto);
+        sb.append(", nombre='").append(nombre).append('\'');
+        sb.append(", apellidos='").append(apellidos).append('\'');
+        sb.append(", apodo='").append(apodo).append('\'');
+        sb.append(", relacion='").append(relacion).append('\'');
+        sb.append(", telefono='").append(telefono).append('\'');
+        sb.append(", cumpleanios=").append(cumpleanios);
+        sb.append(", instagram='").append(instagram).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", empresa='").append(empresa).append('\'');
+        return sb.toString();
     }
 }
